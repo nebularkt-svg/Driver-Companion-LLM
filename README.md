@@ -1,6 +1,10 @@
-# Driver Companion LLM
+# CalmWheel Driver Companion LLM
 
-This repository contains the English dialogue module for CalmWheel, a companion component of the [Driver-Emotion-recognition project](https://github.com/nebularkt-svg/Driver-Emotion-recognition). It accepts an emotion label and optional speech transcript from upstream components, builds an emotion-aware prompt, and returns a response with trigger, model and latency information.
+An English dialogue module for the CalmWheel student prototype. It accepts an emotion label and optional speech transcript, builds a context-aware prompt, then returns a response with the trigger reason, model, and latency. It supports OpenRouter, local Ollama, and optional speech output.
+
+[Run the local example](#quick-start) · [Check the OpenRouter connection](#openrouter-smoke-test) · [View the upstream recognition demo](https://github.com/nebularkt-svg/Driver-Emotion-recognition)
+
+## Module layout
 
 - [main.py](main.py) coordinates response generation and optional text-to-speech.
 - [interface.py](interface.py) defines the input and output data classes.
@@ -26,3 +30,8 @@ if result:
 ```
 
 Set `tts=True` to enable the original Edge TTS and pygame audio path. This module receives emotion and transcript inputs from callers, so it can be exercised without a camera or microphone.
+
+## OpenRouter smoke test
+
+Set `OPENROUTER_API_KEY` in your environment and run `python test_api.py`.
+The script sends one short request to the configured OpenRouter model and prints the response.
